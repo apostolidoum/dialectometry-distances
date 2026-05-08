@@ -90,7 +90,7 @@ LANGUAGE_CODES = {
     "UD_Latgalian": "ltg",
     "UD_Latin": "la",
     "UD_Latvian": "lv",
-    "UD_Lingurian": "lij",
+    "UD_Ligurian": "lij",
     "UD_Lithuanian": "lt",
     "UD_Livvi": "olo",
     "UD_Low_Saxon": "nds",

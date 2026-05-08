@@ -160,6 +160,7 @@ if __name__ == "__main__":
         for entry in os.scandir(TREEBANKS_PATH)
         if entry.is_dir() and entry.name.startswith("UD_")
     ]
+    exceptions = []
     for UD_PATH in UD_PATHS:
         language_code = LANGUAGE_CODES[UD_PATH.split("-")[0]]
         extra_arguments = UD_PATH.split("-")[1]
@@ -168,7 +169,6 @@ if __name__ == "__main__":
         train_path = TREEBANKS_PATH / f"{UD_PATH}" / f"{prefix}-ud-train.conllu"
         dev_path = TREEBANKS_PATH / f"{UD_PATH}" / f"{prefix}-ud-dev.conllu"
         test_path = TREEBANKS_PATH / f"{UD_PATH}" / f"{prefix}-ud-test.conllu"
-        print(train_path)
 
         try:
             create_custom_dataset(
@@ -179,3 +179,9 @@ if __name__ == "__main__":
             )
         except Exception as e:
             print(e)
+            exceptions.append(f"{UD_PATH}: {e}")
+
+    print("Exceptions while runing the code: ")
+    for exception in exceptions:
+        print(exception)
+    print(f"a total of {len(exceptions)} languages")
