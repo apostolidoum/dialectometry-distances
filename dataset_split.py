@@ -170,9 +170,12 @@ if __name__ == "__main__":
         test_path = TREEBANKS_PATH / f"{UD_PATH}" / f"{prefix}-ud-test.conllu"
         print(train_path)
 
-        create_custom_dataset(
-            train_path=train_path,
-            dev_path=dev_path,
-            test_path=test_path,
-            dest_dir=SAMPLE_TREEBANK_PATH / f"{UD_PATH}",
-        )
+        try:
+            create_custom_dataset(
+                train_path=train_path,
+                dev_path=dev_path,
+                test_path=test_path,
+                dest_dir=SAMPLE_TREEBANK_PATH / f"{UD_PATH}",
+            )
+        except Exception as e:
+            print(e)
