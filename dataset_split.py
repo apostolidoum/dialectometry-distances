@@ -1,7 +1,11 @@
+import os
 import random
-import conllu
 from pathlib import Path
 from typing import List, Tuple
+
+import conllu
+
+from constants import LANGUAGE_CODES
 
 
 def read_and_combine_files(file_paths: List[Path]) -> List[conllu.TokenList]:
@@ -146,18 +150,29 @@ def create_custom_dataset(
     print("\nPipeline completed successfully!")
 
 
-# ---Testing----------------------------------------------------------------------------
+if __name__ == "__main__":
+    TREEBANKS_PATH = Path("ud-treebanks-v2.17")
+    SAMPLE_TREEBANK_PATH = Path("ud-treebanks-v2.17-samples")
+    os.makedirs(SAMPLE_TREEBANK_PATH, exist_ok=True)
 
+    UD_PATHS = [
+        entry.name
+        for entry in os.scandir(TREEBANKS_PATH)
+        if entry.is_dir() and entry.name.startswith("UD_")
+    ]
+    for UD_PATH in UD_PATHS:
+        language_code = LANGUAGE_CODES[UD_PATH.split("-")[0]]
+        extra_arguments = UD_PATH.split("-")[1]
+        prefix = "_".join([language_code, extra_arguments.lower()])
 
-create_custom_dataset(
-    train_path=Path(
-        "ud-treebanks-v2.17/UD_Afrikaans-AfriBooms/af_afribooms-ud-train.conllu"
-    ),
-    test_path=Path(
-        "ud-treebanks-v2.17/UD_Afrikaans-AfriBooms/af_afribooms-ud-test.conllu"
-    ),
-    dev_path=Path(
-        "ud-treebanks-v2.17/UD_Afrikaans-AfriBooms/af_afribooms-ud-dev.conllu"
-    ),
-    dest_dir=Path("./testing"),
-)
+        train_path = TREEBANKS_PATH / f"{UD_PATH}" / f"{prefix}-ud-train.conllu"
+        dev_path = TREEBANKS_PATH / f"{UD_PATH}" / f"{prefix}-ud-dev.conllu"
+        test_path = TREEBANKS_PATH / f"{UD_PATH}" / f"{prefix}-ud-test.conllu"
+        print(train_path)
+
+        create_custom_dataset(
+            train_path=train_path,
+            dev_path=dev_path,
+            test_path=test_path,
+            dest_dir=SAMPLE_TREEBANK_PATH / f"{UD_PATH}",
+        )
