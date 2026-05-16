@@ -2,3 +2,10 @@ ud-treebanks-v2.17
 .DS_Store
 ud-treebanks-v2.17-samples
 __pycache__
+stanza-train
+saved_models
+logs
+fastText
+data
+test_data/
+parsed_data/
