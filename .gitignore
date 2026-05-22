@@ -9,3 +9,4 @@ fastText
 data
 test_data/
 parsed_data/
+ud-treebanks-v2.17-samples-romanized
