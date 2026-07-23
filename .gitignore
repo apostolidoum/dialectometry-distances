@@ -14,3 +14,6 @@ stanza-train/
 tools/
 metrics/
 *.png
+*.zip
+30_langs/
+30_langs_romanized/
