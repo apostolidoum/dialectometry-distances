@@ -3,7 +3,7 @@ This repo contains the code for the preprocessing, experiment and evaluation of 
 
 ## Data Preprocessing
 - `dataset_split.py` takes as input the `ud-treebanks-v2.17` and resamples it. The languages that are selected are those that contain
-more than 320 sentences of 8 or more words. The split performed holds 100 sentences as the train set, 20 sentences as the dev set and 200 sentences
+more than 320 sentences of 8 or more words. The split performed holds 200 sentences as the train set, 20 sentences as the dev set and 100 sentences
 as the test set. From originally 339 treebanks, 231 treebanks meet this requirement. The newly sampled datasets are saved at `ud-treebanks-v2,17-samples`.
 
 - `romanize_files.py` takes as input `ud-treebanks-v2.17-samples` and romanizes the text. The files are stored in

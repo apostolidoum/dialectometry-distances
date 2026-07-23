@@ -40,9 +40,9 @@ def filter_by_word_count(
 
 def sample_splits(
     sentences: List[conllu.TokenList],
-    train_size: int = 100,
+    train_size: int = 200,
     dev_size: int = 20,
-    test_size: int = 200,
+    test_size: int = 100,
     seed: int = 42,
 ) -> Tuple[List[conllu.TokenList], List[conllu.TokenList], List[conllu.TokenList]]:
     """Randomly samples sentences into Train, Dev, and Test splits."""
@@ -118,7 +118,7 @@ def create_custom_dataset(
 
     print("Step 3: Sampling dataset splits...")
     train_split, dev_split, test_split = sample_splits(
-        sentences=valid_sentences, train_size=100, dev_size=20, test_size=200, seed=42
+        sentences=valid_sentences, train_size=200, dev_size=20, test_size=100, seed=42
     )
 
     print("Step 4 & 5: Re-indexing and saving...")
