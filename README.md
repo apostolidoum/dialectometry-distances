@@ -10,9 +10,10 @@ as the test set. From originally 339 treebanks, 231 treebanks meet this requirem
 `ud-treebanks-v2.17-samples-romanized`.
 
 ## Model Training
-- `Maria-Apostolidou-3.ipynb` is used to train Stanza models using multilingual word embeddings.
-- `Maria-Apostolidou-no-embeds.ipynb` is used to train Stanza models using FastText embeddings.
-Both these experiments create a `parsed_data` containing the output of a model on a particular language and `test_data` which contains the gold test data.
+- `stanza_bert.ipynb` is used to train Stanza models using multilingual word embeddings.
+- `stanza_fastttext.ipynb` is used to train Stanza models using FastText embeddings.
+- `stanza_no_embeds.ipynb` is used to train Stanza models without any embeddings.
+All these experiments create a `parsed_data` containing the output of a model on a particular language and `test_data` which contains the gold test data.
 
 Example:
 ```
