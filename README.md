@@ -9,6 +9,10 @@ as the test set. From originally 339 treebanks, 231 treebanks meet this requirem
 - `romanize_files.py` takes as input `ud-treebanks-v2.17-samples` and romanizes the text. The files are stored in
 `ud-treebanks-v2.17-samples-romanized`.
 
+- `postprocess.py` takes as input the `ud-treebanks-v2.17-samples-romanized` and creates a new folder, `ud-treebanks-v2.17-samples-romanized-clean` that replaces empty tokens in the form and lemma column of the conllu with _
+
+- `romanize_arabic.py` is an alternative way to romanize the Arabic language using the Translit from the Misc column instead of uroman.
+
 ## Model Training
 - `stanza_bert.ipynb` is used to train Stanza models using multilingual word embeddings.
 - `stanza_fastttext.ipynb` is used to train Stanza models using FastText embeddings.
