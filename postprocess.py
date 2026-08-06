@@ -1,19 +1,20 @@
-# script to replace the empty forms in a conllu file with _
+# script to replace the empty forms in a conllu file with _ and copy other files
 import os
+import shutil
 
 
 def fix_empty_fields_robust(source_treebanks_path, target_treebanks_path):
     for root, dirs, files in os.walk(source_treebanks_path):
         for file in files:
+            rel_path = os.path.relpath(root, source_treebanks_path)
+            source_file_path = os.path.join(root, file)
+
+            dest_dir = os.path.join(target_treebanks_path, rel_path)
+            os.makedirs(dest_dir, exist_ok=True)
+            target_file_path = os.path.join(dest_dir, file)
+
             if file.endswith(".conllu"):
-                rel_path = os.path.relpath(root, source_treebanks_path)
-                source_file_path = os.path.join(root, file)
-
-                dest_dir = os.path.join(target_treebanks_path, rel_path)
-                os.makedirs(dest_dir, exist_ok=True)
-                target_file_path = os.path.join(dest_dir, file)
-
-                print(f"Processing: {target_file_path}")
+                print(f"Processing CoNLL-U: {target_file_path}")
 
                 with open(source_file_path, "r", encoding="utf-8") as f:
                     lines = f.readlines()
@@ -39,6 +40,9 @@ def fix_empty_fields_robust(source_treebanks_path, target_treebanks_path):
 
                 with open(target_file_path, "w", encoding="utf-8") as f:
                     f.writelines(fixed_lines)
+            else:
+                print(f"Copying file: {target_file_path}")
+                shutil.copy2(source_file_path, target_file_path)
 
 
 if __name__ == "__main__":
