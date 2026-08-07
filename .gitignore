@@ -10,6 +10,8 @@ data
 test_data/
 parsed_data/
 ud-treebanks-v2.17-samples-romanized
+ud-treebanks-v2.17-samples-romanized-clean/
+UD_Arabic-PADTROM/
 stanza-train/
 tools/
 metrics/
