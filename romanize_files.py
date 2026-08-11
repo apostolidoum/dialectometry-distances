@@ -1,11 +1,15 @@
-import uroman as ur
 import os
+
+import uroman as ur
 
 if __name__ == "__main__":
     uroman = ur.Uroman()
 
     TREEBANKS_PATH = "ud-treebanks-v2.17-samples"
     TARGET_TREEBANKS_PATH = "ud-treebanks-v2.17-samples-romanized"
+
+    # TREEBANKS_PATH = "pud-split"
+    # TARGET_TREEBANKS_PATH = "pud-split-romanized"
 
     UD_PATHS = [
         entry.name

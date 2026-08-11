@@ -49,5 +49,8 @@ if __name__ == "__main__":
     SOURCE_PATH = "ud-treebanks-v2.17-samples-romanized"
     TARGET_PATH = "ud-treebanks-v2.17-samples-romanized-clean"
 
+    # SOURCE_PATH = "pud-split-romanized"
+    # TARGET_PATH = "pud-split-romanized-clean"
+
     fix_empty_fields_robust(SOURCE_PATH, TARGET_PATH)
     print("Post-processing complete! Cleaned files saved to:", TARGET_PATH)

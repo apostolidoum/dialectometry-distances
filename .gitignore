@@ -24,3 +24,5 @@ dummy.pt
 *.xlsx
 pud-treebanks/
 pud-split/
+pud-split-romanized/
+pud-split-romanized-clean/
