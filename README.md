@@ -13,6 +13,14 @@ as the test set. From originally 339 treebanks, 231 treebanks meet this requirem
 
 - `romanize_arabic.py` is an alternative way to romanize the Arabic language using the Translit from the Misc column instead of uroman.
 
+- `pud_split.py` takes the `pud-treebanks` from `ud-treebanks-v2.18` and splits them into train (800), dev (100), test (100) sentences. The result is stored in a folder called `pud-split`.
+To extract the pud treebanks from the `ud-treebanks-v2.18` we used the following commands:
+```
+mkdir pud-treebanks
+find ud-treebanks-v2.18 -type d -name "*PUD" -exec cp -r {} pud-treebanks/ \;
+```
+and then we manually added the `UD_Japanese-PUDLUW`
+
 ## Model Training
 - `stanza_bert.ipynb` is used to train Stanza models using multilingual word embeddings.
 - `stanza_fastttext.ipynb` is used to train Stanza models using FastText embeddings.
