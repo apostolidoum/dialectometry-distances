@@ -187,3 +187,5 @@ LANGUAGE_CODES = {
     "UD_Yupik": "ess",
     "UD_Zaar": "say",
 }
+
+REVERSED_CODES = {v: k for k, v in LANGUAGE_CODES.items()}
